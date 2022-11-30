@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Empleado } from './empleado.model';
-import { EmpleadosService } from './empleados.service';
-import { ServicioEmpleadosService } from './servicio-empleados.service';
+import firebase from 'firebase/compat/app'
+import { loginService } from './login/login.service';
+
 
 
 @Component({
@@ -10,42 +10,43 @@ import { ServicioEmpleadosService } from './servicio-empleados.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  [x: string]: any;
-  titulo = 'Listado de empleados';
 
 
-  
+    
 
-  constructor(private miServicio:ServicioEmpleadosService, private empleadosService: EmpleadosService ){
+  constructor(private loginService:loginService){
 
-        //this.empleados=this.empleadosService.empleados;
-
+      
   }
   ngOnInit(): void {
-    this.empleados=this.empleadosService.empleados;
+  
+
+    firebase.initializeApp({
+
+
+      apiKey: "AIzaSyALdfemvJ7-xV1xr_0JEeprYrW6EeqdiTQ",
+      authDomain: "mis-clientes-8c1fb.firebaseapp.com",
+  
+      
+    })
+
+
   }
 
-  empleados:Empleado[]=[];
+  estaLogueado(){
+
+    return this.loginService.estaLogueado();
+
+  }
+
+  logout(){
+
+    this.loginService.logout();
+    
+  }
 
 
 
-agregarEmpleado(){
-  let miEmpleado=new Empleado(this.cuadroNombre,this.cuadroApellido,this.cuadroCargo,this.cuadroSalario);
-  //this.miServicio.muestraMensaje("nombre del empleado: " + miEmpleado.nombre     );
-  this.empleadosService.agregarEmpleadoServicio(miEmpleado);
-
-
-}
-
-
-
-cuadroNombre:string="";
-cuadroApellido:string="";
-cuadroCargo:string="";
-cuadroSalario:number=0;
-
-
-  
 
 
 }
