@@ -1,37 +1,15 @@
 <div>
-<br/>
-<form class="form-group row"  #miFormulario="ngForm"  (ngSubmit)="login(miFormulario)">
-
-
-            <div class="form-group col-md-3">
-
-                <input type="email" name="Email" placeholder="Email" class="form-control" ngModel id="">
-            </div>
-
-            
-            <div  class="form-group col-md-3">
-
-                <input type="password" name="password" placeholder="password"  class="form-control" ngModel  id="">
-            
-            </div>
-
-            <br/><br/>
-
-            <div >
-                
-                <button type="submit" class="btn btn-primary">Login</button>
-
-            </div>
-
-
-
-
-
-
-
-
-
-
-</form>
-
+    <br> 
+    <form action="" class="form-group row" #miFormulario="ngForm" (ngSubmit)="login(miFormulario)">
+        <div class="form-group col-md-3">
+            <input class="form-control" type="email" value="" name="email" placeholder="email" ngModel>
+        </div>
+        <div class="form-group col-md-3">
+            <input class="form-control" type="password" placeholder="password" name="password" ngModel>
+        </div>
+        <br><br>
+        <div>
+            <button class="btn btn-primary" type="submit">Login</button>
+        </div>
+    </form>
 </div>

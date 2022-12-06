@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Empleado } from '../empleado.model';
-import { EmpleadosService } from '../empleados.service';
+import { EmpleadosService } from '../empleado.service';
 import { ServicioEmpleadosService } from '../servicio-empleados.service';
 
 @Component({
@@ -9,52 +9,28 @@ import { ServicioEmpleadosService } from '../servicio-empleados.service';
   templateUrl: './proyectos-component.component.html',
   styleUrls: ['./proyectos-component.component.css']
 })
-export class ProyectosComponentComponent implements OnInit {
+export class ProyectosComponentComponent implements OnInit{
 
-  constructor(private router:Router, private miServicio:ServicioEmpleadosService, private empleadosService: EmpleadosService) { }
-
-
-  
+  constructor(private router:Router, private miServicio:ServicioEmpleadosService, private empleadosService:EmpleadosService){}
   empleados:Empleado[]=[];
-
-
   ngOnInit(): void {
-
-    
     this.empleados=this.empleadosService.empleados;
+  }
+  
+  volverHome(){
+    this.router.navigate(['']);
+  }
+  agregarEmpleado(){
+    let miEmpleado=new Empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
+    // this.miServicio.muestraMensaje("Nombre del empleado: "+miEmpleado.nombre);
+    this.empleadosService.agregarEmpleadoServicio(miEmpleado);
 
-
+    this.router.navigate(['']);
   }
 
 
-
-volverHome(){
-
-this.router.navigate(['']);
-
-}
-
-
-
-agregarEmpleado(){
-  let miEmpleado=new Empleado(this.cuadroNombre,this.cuadroApellido,this.cuadroCargo,this.cuadroSalario);
-  //this.miServicio.muestraMensaje("nombre del empleado: " + miEmpleado.nombre     );
-  this.empleadosService.agregarEmpleadoServicio(miEmpleado);
-  this.router.navigate(['']);
-
-
-}
-
-
-
-cuadroNombre:string="";
-cuadroApellido:string="";
-cuadroCargo:string="";
-cuadroSalario:number=0;
-
-
-  
-
-
-
+  cuadroNombre:string="";
+  cuadroApellido:string="";
+  cuadroCargo:string="";
+  cuadroSalario:number=0;
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Empleado } from '../empleado.model';
 
 @Component({
@@ -6,35 +6,22 @@ import { Empleado } from '../empleado.model';
   templateUrl: './empleado-hijo-c.component.html',
   styleUrls: ['./empleado-hijo-c.component.css']
 })
-export class EmpleadoHijoCComponent implements OnInit {
-
+export class EmpleadoHijoCComponent {
   @Input() empleadoDeLista:Empleado;
   @Input() indice:number;
+  // empleados:Empleado[]=[
+  //   new Empleado("Juan","Diaz","Presidente",7500),
+  //   new Empleado("Ana","Martin","Directora",5500),
+  //   new Empleado("Maria","Fdez","Jefa seccion",3500),
+  //   new Empleado("Laura","Lopez","Administrativo",2500),
+  // ];
+  // empleadoAgregado(empleado:Empleado){
+  //   this.empleados.push(empleado);
+  // }
+    arrayCaracteristicas = [''];
 
-
-  constructor() { }
-
-  ngOnInit(): void {
+  agregarCaracteristica(nuevaCaracteristica: string) {
+    this.arrayCaracteristicas.push(nuevaCaracteristica);
+  }
   }
 
-  
-empleados:Empleado[]=[
-
-  new Empleado("Jean", "Caceres","Presidente",7500),
-  new Empleado("Ana", "martin","Directora",6500),
-  new Empleado("Maria", "Fernandez","Jefa sección",5500),
-  new Empleado("Laura", "lópez","Administrativo",4500),
-
-
-];
-
-arrayCaracteristicas = [''];
-
-agregarCaracteristica(nuevaCaracteristica: string) {
-  this.arrayCaracteristicas.push(nuevaCaracteristica);
-}
-
-
-
-
-}
